@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkMode HTML, CSS e JS</title>
+    <!-- arquivos css -->
+    <link href="css/ligthmode.css" rel="stylesheet" id="ligthmode" />
+    <link href="css/darkmode.css" rel="stylesheet" id="darkmode" disabled />
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;600&display=swap');
+
+        * { margin:0; padding:0; border:0; }
+        body { font-family:'Raleway', sans-serif; font-weight:600; }
+        header { background:#16a085; padding:15px 0; }
+        header .container { display:flex; align-items:center; justify-content:space-between;}
+        main p { margin: 20px 0; }
+
+        .container { max-width:1200px; display:block; margin:0 auto; padding:20px; }
+        .btn-modo-visualizacao { background:none; cursor:pointer; }
+        .github { color:#FFFFFF; text-decoration:none; }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="https://github.com/dpelissari" class="github" target="_blank">github.com/dpelissari</a>
+            <button class="btn-modo-visualizacao" onclick="toggleDarkMode()">
+                <img src="./img/ico-modo-escuro.svg" width="40" height="40" alt="Habilitar modo escuro"
+                    id="ico-modovisual" />
+            </button>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <p>Este exemplo é um código feito com HTML, CSS e JavaScript que permite alterar a folha de estilos da
+                página com base no clique no botão (lua para o modo darkmode e sol para o modo ligthmode). Além disso,
+                ele utiliza a funcionalidade do armazenamento local do navegador para salvar as preferências do usuário
+                e manter a seleção mesmo após a página ser atualizada ou fechada.</p>
+            <p>A mudança de estilo é realizada por meio da alteração da propriedade href do elemento link que faz
+                referência à folha de estilos. O JavaScript adiciona um ouvinte de eventos ao botão, que, quando
+                clicado, chama uma função que alterna entre dois estilos diferentes. Essa função também usa a
+                funcionalidade do localStorage para salvar a preferência do usuário.</p>
+            <p>Ao salvar as preferências do usuário no localStorage, o código garante que a seleção do usuário seja
+                mantida mesmo após a página ser atualizada ou fechada. Isso significa que o usuário não precisa
+                selecionar o estilo desejado toda vez que visitar a página, tornando a experiência do usuário mais
+                agradável e eficiente.</p>
+        </div>
+    </main>
+    <script type="text/javascript">
+        window.toggleDarkMode = function () {
+            var ligth = document.getElementById("ligthmode");
+            var dark = document.getElementById("darkmode");
+            var icoModoVisual = document.getElementById("ico-modovisual");
+
+            if (ligth.disabled) {
+                ligth.disabled = false;
+                dark.disabled = true;
+                icoModoVisual.setAttribute('src', 'img/ico-modo-escuro.svg');
+                localStorage.setItem("modoVisual","claro");
+            } else if (dark.disabled) {
+                ligth.disabled = true;
+                dark.disabled = false;
+                icoModoVisual.setAttribute('src', 'img/ico-modo-claro.svg');
+                localStorage.setItem("modoVisual","escuro");
+            }
+        }
+
+        window.onload = function () {
+            var modo = localStorage.getItem("modoVisual");
+            var ligth = document.getElementById("ligthmode");
+            var dark = document.getElementById("darkmode");
+
+            if (modo == "claro") {
+                ligth.disabled = false;
+                dark.disabled = true;
+            } else if (modo == "escuro") {
+                ligth.disabled = true;
+                dark.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
