@@ -4,4 +4,4 @@ A mudança de estilo é realizada por meio da alteração da propriedade href do
 
 Ao salvar as preferências do usuário no localStorage, o código garante que a seleção do usuário seja mantida mesmo após a página ser atualizada ou fechada. Isso significa que o usuário não precisa selecionar o estilo desejado toda vez que visitar a página, tornando a experiência do usuário mais agradável e eficiente.
 
-Demo: https://dpelissari.github.io/Daniel.Pelissari.Darkmode.HTML.CSS.JS/
+Demo: https://dpelissari.github.io/Darkmode.HTML.CSS.JS/
